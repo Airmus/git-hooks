@@ -1,0 +1,60 @@
+{
+  "name": "@airmus/git-hooks",
+  "version": "0.0.1",
+  "description": "some useful git hook",
+  "bin": {
+    "update-version": "./dist/bin/update-version.js"
+  },
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "dev": "npm run clean && tsc -w",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "git",
+    "git hook"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "core/**/*": [
+      "cross-env NODE_ENV=prod eslint",
+      "git add"
+    ]
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Airmus/git-hooks.git"
+  },
+  "author": "fog3211 <fog3211@163.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.9",
+    "@types/node": "^14.14.22",
+    "@typescript-eslint/eslint-plugin": "^4.1.0",
+    "@typescript-eslint/parser": "^4.1.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.19.0",
+    "eslint-plugin-import": "^2.24.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.3",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "fs-extra": "^9.1.0",
+    "is-animated": "^2.0.1",
+    "ora": "^5.4.1"
+  }
+}
